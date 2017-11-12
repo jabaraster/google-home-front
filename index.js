@@ -1,5 +1,4 @@
 module.exports = function(startFunction, conversationFunction, endFunction, bodyHandler) {
-    console.log('create front.')
     return function(event, context, callback) {
         const body = JSON.parse(event.body)
         if (typeof bodyHandler === 'function') {
@@ -14,6 +13,7 @@ module.exports = function(startFunction, conversationFunction, endFunction, body
                 break
             case 'end':
                 endFunction(event, context, callback)
+                break
             default:
                 conversationFunction(event, context, callback)
                 break
